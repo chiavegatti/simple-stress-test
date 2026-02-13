@@ -1,0 +1,42 @@
+{
+  "timestamp_utc": "2026-02-13T16:38:43Z",
+  "url": "https://example.com",
+  "method": "GET",
+  "headers": {},
+  "num_requests": 5,
+  "num_threads": 2,
+  "repeats": 1,
+  "timeout_seconds": 10.0,
+  "runs": [
+    {
+      "run_index": 1,
+      "success_count": 5,
+      "failed_count": 0,
+      "status_counts": {
+        "200": 5
+      },
+      "total_time_seconds": 0.1494,
+      "requests_per_second": 33.4767,
+      "latency_seconds": {
+        "min": 0.017713,
+        "avg": 0.059589,
+        "max": 0.120749
+      }
+    }
+  ],
+  "aggregate": {
+    "total_requests": 5,
+    "success_count": 5,
+    "failed_count": 0,
+    "status_counts": {
+      "200": 5
+    },
+    "total_time_seconds": 0.1494,
+    "requests_per_second": 33.4767,
+    "latency_seconds": {
+      "min": 0.017713,
+      "avg": 0.059589,
+      "max": 0.120749
+    }
+  }
+}

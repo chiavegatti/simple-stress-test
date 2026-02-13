@@ -1,0 +1,26 @@
+Timestamp (UTC): 2026-02-13T16:42:31Z
+URL: https://example.com
+Method: GET
+Headers: {}
+Requests per run: 5
+Threads: 2
+Repeats: 1
+Timeout (s): 10.0
+
+Aggregate:
+  Total requests: 5
+  Successful requests: 5
+  Failed requests: 0
+  Status counts: {'200': 5}
+  Total time: 0.1163 seconds
+  Requests per second: 42.9792
+  Latency (s): min=0.016339 avg=0.044158 max=0.088462
+
+Runs:
+  Run 1:
+    Successful requests: 5
+    Failed requests: 0
+    Status counts: {'200': 5}
+    Total time: 0.1163 seconds
+    Requests per second: 42.9792
+    Latency (s): min=0.016339 avg=0.044158 max=0.088462

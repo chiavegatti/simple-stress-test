@@ -2,6 +2,7 @@ import json
 import os
 import threading
 import time
+from urllib.parse import urlparse
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 
@@ -143,8 +144,9 @@ def stress_test(
         else 0.0
     )
 
+    timestamp_utc = datetime.utcnow().replace(microsecond=0)
     report = {
-        "timestamp_utc": datetime.utcnow().isoformat(timespec="seconds") + "Z",
+        "timestamp_utc": timestamp_utc.isoformat() + "Z",
         "url": url,
         "method": method,
         "headers": headers,
@@ -168,9 +170,17 @@ def stress_test(
         },
     }
 
+    parsed_url = urlparse(url)
+    host = parsed_url.netloc or parsed_url.path or "unknown"
+    safe_host = "".join(
+        ch if ch.isalnum() or ch in (".", "-") else "_" for ch in host
+    )
+    timestamp_suffix = timestamp_utc.strftime("%Y-%m-%d_%H-%M-%S")
+    base_name = f"report_{safe_host}_{timestamp_suffix}"
+
     os.makedirs(output_dir, exist_ok=True)
-    txt_path = os.path.join(output_dir, "report.txt")
-    json_path = os.path.join(output_dir, "report.json")
+    txt_path = os.path.join(output_dir, f"{base_name}.txt")
+    json_path = os.path.join(output_dir, f"{base_name}.json")
 
     with open(txt_path, "w", encoding="utf-8") as txt_file:
         txt_file.write(f"Timestamp (UTC): {report['timestamp_utc']}\n")

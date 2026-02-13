@@ -39,8 +39,8 @@ You will be prompted for:
 
 The script writes two files under the output directory:
 
-- output/report.txt
-- output/report.json
+- output/report_<host>_<timestamp>.txt
+- output/report_<host>_<timestamp>.json
 
 The report includes URL, request count, thread count, totals, duration, and requests per second.
 
